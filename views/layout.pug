@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+   header
+     nav
+       a(href="/")
+          img#logo(src="/images/logo1.jpg")
+       ul
+        li
+          a(href="/sign-up") Sign Up
+        li
+          a(href="/login") Login  
+
+   .search-nav
+     form
+        .input_wrapper
+          label(for="destination") Destination
+          input(type="text" id="destination" name="destination" required)
+        .input_wrapper
+          label(for="duration") Duration (night)
+          input(type="text" id="duration" name="duration" required)   
+        .input_wrapper
+          label(for="departure-date") Departure date
+          input(type="date" id="departure-date" name="dateOfDeparture" required) 
+        .input_wrapper
+          label(for="number-guests") Number of guests
+          input(type="number" id="number-guests" name="numOfGuests" required) 
+
+        .input_wrapper
+          select(name="stars")
+            option(value="1") 1 Star   
+            option(value="2") 2 Stars  
+            option(value="3") 3 Stars  
+            option(value="4") 4 Stars  
+            option(value="5") 5 Stars  
+
+        .input_wrapper
+          select(name="sort")
+            option(value="1") Price: Low-High
+            option(value="-1") Price: High-Low
+
+        .input_wrapper
+           button(type="submit") SEARCH
+
+  //- img(class="homepage" src="/images/travel.jpg")                          
+  block content

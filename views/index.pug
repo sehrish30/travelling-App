@@ -1,0 +1,11 @@
+extends layout
+include mixins/_hotel
+
+block content
+  img(class="homepage" src="images/travel.jpg")
+
+  .outer_wrapper
+     .hotel_wrapper
+        h2 Hotels
+          a(href="/all") (All hotels)
+     +hotel        
