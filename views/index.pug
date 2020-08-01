@@ -1,5 +1,6 @@
 extends layout
 include mixins/_hotel
+include mixins/_country_list
 
 block content
   img(class="homepage" src="images/travel.jpg")
@@ -7,5 +8,16 @@ block content
   .outer_wrapper
      .hotel_wrapper
         h2 Hotels
-          a(href="/all") (All hotels)
-     +hotel        
+          a(href=`/all`) (View All)
+        ul
+          each hotel in filteredHotels
+            +hotel(hotel)
+     .country_wrapper
+        h2 Countries
+          a(href=`/countries`) (View All)
+        ul(class="countries")
+         each country in filteredCountries
+          +countryList(country._id)
+            
+                       
+           

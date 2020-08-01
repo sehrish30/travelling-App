@@ -1,0 +1,10 @@
+extends layout
+include mixins/_country_list
+block content
+  h2=title
+    .country_wrapper
+      ul(class="countries")
+        each country in allCountries
+         +countryList(country)
+        else
+          li There are no countries    

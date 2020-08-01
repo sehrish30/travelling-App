@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require("mongoose");
-
+require('dotenv').config();
 var indexRouter = require('./routes/index');
 
 var app = express();
@@ -17,7 +17,7 @@ var app = express();
 // })
 
 //New set up
-mongoose.connect("mongodb+srv://lets_travel:letstravel@cluster0.icmzf.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -36,6 +36,11 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  res.locals.url = req.path
+  next();
+})
+
 app.use('/', indexRouter);
 
 
@@ -43,6 +48,8 @@ app.use('/', indexRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function (err, req, res, next) {

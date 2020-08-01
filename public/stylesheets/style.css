@@ -1,13 +1,431 @@
+:root {
+  --main-font: 'Raleway', sans-serif;
+  --hightligh-font: 'Playfair Display', serif;
+
+  --main-color: #3f4441;
+  --primary-color: #5e6f64;
+  --secondary-color: #ba7967;
+  --btn-color: #ffdecf;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background-image: linear-gradient(to right, var(--primary-color), var(--main-color));
+  font-family: var(--main-font)
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 0 1rem;
+  font: 14px var(--main-font), Helvetica, Arial, sans-serif;
+  color: var(--btn-color);
 }
 
 a {
-  color: #00B7FF;
+  font-size: 2rem;
 }
 
 .homepage {
-  width: 80vw;
-  height: 80vh;
+  width: 100%;
+  height: 35vh;
+  margin-bottom: 2rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--main-color);
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  font-size: 1.6em;
+  display: inline-block;
+  margin: 0 10px;
+  color: var(--btn-color);
+}
+
+label {
+  font-size: 1.4rem;
+}
+
+a {
+  color: var(--btn-color);
+  text-decoration: none;
+}
+
+.search-nav {
+  background: var(--secondary-color);
+  padding: 3rem .5rem;
+  margin: 0 auto;
+  display: block;
+}
+
+.search_nav>form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 60%;
+  height: 28px;
+  margin-top: 0.5rem;
+  outline: none;
+  border: none;
+  border-bottom: 2px outset var(--btn-color);
+  color: white;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  background: transparent;
+}
+
+.input_wrapper {
+  margin: .5rem 10rem;
+  text-align: left;
+
+}
+
+select,
+button {
+  margin: 0.1rem 0.3rem;
+  height: 36px;
+  width: 85%;
+  border: none;
+  background: var(--btn-color);
+  color: var(--primary-color);
+  font-weight: bold;
+  font-family: var(--main-font);
+  padding: 0 0.5rem;
+  outline: none;
+}
+
+button {
+  background: var(--main-color);
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--hightligh-font);
+  letter-spacing: 0.5rem;
+  font-size: 1.2rem;
+  transition: border 1s;
+  color: var(--btn-color);
+}
+
+button:hover {
+  border: 1.5px dotted var(--main-color);
+}
+
+img {
+  width: 100%;
+}
+
+.dps {
+  width: 100%;
+  height: 30vh;
+  margin: 2rem auto;
+  object-fit: cover;
+}
+
+/* Content countries */
+.outer_wrapper {
+  text-align: center;
+  font-size: 1rem;
+}
+
+h2 {
+  font-family: var(--hightligh-font);
+  font-size: 2.5rem;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+h2:hover {
+  text-decoration: underline;
+}
+
+.hotel {
+  background: var(--btn-color);
+  margin: 1rem 0 1rem 0;
+  color: var(--main-color);
+  padding: 3rem 0;
+}
+
+h3 {
+  color: var(--main-color);
+  font-family: var(--hightligh-font);
+  font-size: 2.2rem
+}
+
+.para {
+  font-family: var(--main-font);
+  color: var(--main-color);
+  font-size: 1.8em;
+  padding: 0.5rem;
+}
+
+hr {
+  overflow: visible;
+  /* For IE */
+  height: 30px;
+  border-style: solid;
+  border-color: var(--main-color);
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+
+hr:before {
+  /* Not really supposed to work, but does */
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: var(--main-color);
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+
+button.button_small,
+button.button_small1 {
+  border: 1px solid var(--main-color);
+  width: 11rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--main-color);
+  background-color: var(--btn-color);
+}
+
+button.button_small {
+  margin-left: 10rem;
+}
+
+button.button_small1 {
+  margin-left: 15rem;
+}
+
+.hotel_info {
+  padding: 2rem;
+  text-align: center;
+}
+
+.form_input {
+  margin: 1rem;
+}
+
+.form_input textarea {
+  width: 20rem;
+  height: 10rem;
+  background-color: var(--btn-color);
+  border-radius: 5px;
+}
+
+.form_input label {
+  margin: 1rem;
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+.custom-file-input {
+  color: transparent;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: 'Select some files';
+  color: var(--main-color);
+  display: inline-block;
+  background: -webkit-linear-gradient(top, var(--btn-color), var(--secondary-color));
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  color: var(--main-color);
+}
+
+input#available,
+input#unavailable {
+  width: 10%;
+}
+
+
+.custom-file-input:hover::before {
+  border-color: var(--main-color);
+}
+
+.custom-file-input:active {
+  outline: 0;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, var(--btn-color), var(--secondary-color));
+}
+
+.button_admin {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.admin-btn {
+  background-color: var(--primary-color);
+  padding: 1rem;
+  font-size: 1.5rem;
+  width: 10rem;
+  height: 5rem;
+  font-family: var(--hightligh-font);
+}
+
+.add {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.country {
+  margin: 1rem;
+}
+
+.hotel_order_details {
+  background-color: var(--primary-color);
+  color: var(--btn-color);
+  text-align: center;
+  padding: 2rem;
+}
+
+.para1 {
+  font-family: var(--main-font);
+  color: var(--btn-color);
+  font-size: 1.8em;
+  padding: 0.5rem;
+}
+
+.hotel_order_details>h3 {
+  color: var(--btn-color);
+}
+
+@media (min-width: 1330px) {
+  nav {
+    flex-direction: row;
+  }
+
+  a {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    flex: 1;
+  }
+
+  nav ul {
+    flex: 2;
+    text-align: right;
+    margin-right: 4rem;
+  }
+
+  .logo {
+    width: 35rem;
+    height: 7rem;
+  }
+
+  .search-nav form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  select,
+  button {
+    width: 95%;
+  }
+
+  .input_wrapper {
+    margin: 0;
+  }
+
+  input {
+    width: 30%;
+    margin-bottom: 1rem;
+  }
+
+  .homepage {
+    object-fit: cover;
+  }
+
+  .outer_wrapper {
+    text-align: left;
+  }
+
+  .hotel {
+    display: flex;
+  }
+
+  .hotel_img {
+    flex: 1;
+    margin: 1rem 4rem;
+    max-width: 50vw;
+  }
+
+  .dps {
+    border-radius: 10px;
+  }
+
+  .hotel_info {
+    flex: 1;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .para {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+
+  .countries {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    text-align: center;
+  }
+
+  li>a {
+    font-weight: bold;
+  }
+
+  .hotel_order_details {
+    max-width: 20rem;
+    border-radius: 10rem 0 10rem 0;
+    padding-top: 4rem;
+  }
+
+  .hotel_order_details>h3 {
+    font-size: 2rem;
+  }
+
+  .para1 {
+    font-size: 1rem;
+  }
+
 }

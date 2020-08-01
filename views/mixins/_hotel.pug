@@ -1,12 +1,45 @@
-mixin hotel
+mixin hotel(hotel, searchQuery)
   .hotel
     .hotel_img
-        a(href='')
-            img(src="/images/hotels/hotel1.jpg")
+       a(href=`/all/${hotel._id}`)
+         img(src=`http://res.cloudinary.com/dcq7qcowc/image/upload/${hotel.image}.jpg`)
+            //- img(class="dps" src=`/images/hotels/${hotel.image}`)
     .hotel_info
-        a(href="")
-        h3 Grand Rous Hotel
+        a(href=`/all/${hotel._id}`)
+          h3=hotel.hotel_name
         hr
-        p Rating: 4
-        p Country: Jamaica
-        p Cost per night: 24 
+        if url.startsWith('/all/')
+         p(class="para")= `Rating ${hotel.hotel_description}`
+         
+        p(class="para")= `Rating ${hotel.star_rating}`
+        p(class="para")= `Country ${hotel.country}`
+        p(class="para")= `Cost per night BHD ${hotel.cost_per_night}`
+        if url.startsWith(`/all/`)
+         hr
+         h3 Search for this hotel
+         .search-nav
+            form(action="/results" method="POST")
+              .input_wrapper
+                label(for="destination") Destination
+                input(type="text" id="destination" name="destination" value=hotel.hotel_name)
+              .input_wrapper
+                label(for="duration") Duration (night)
+                input(type="text" id="duration" name="duration" required)   
+              .input_wrapper
+                label(for="departure-date") Departure date
+                input(type="date" id="departure-date" name="dateOfDeparture" required) 
+              .input_wrapper
+                label(for="number-guests") Number of guests
+                input(type="number" id="number-guests" name="numOfGuests" required) 
+              .input_wrapper
+                button(type="submit") SEARCH
+
+    if url===`/results`
+      .hotel_order_details
+       p(class="para1")= `Number of nights: ${searchQuery.duration}`
+       p(class="para1")= `Departure date: ${searchQuery.dateOfDeparture}`
+       - const costEach=searchQuery.duration*hotel.cost_per_night
+       - const totalCost=costEach*searchQuery.numOfGuests 
+       p(class="para1")=`Total per person BHD ${costEach}`
+       hr
+       h3= `Total: BHD ${totalCost}`
