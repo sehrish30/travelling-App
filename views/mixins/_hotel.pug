@@ -2,7 +2,7 @@ mixin hotel(hotel, searchQuery)
   .hotel
     .hotel_img
        a(href=`/all/${hotel._id}`)
-         img(src=`http://res.cloudinary.com/dcq7qcowc/image/upload/${hotel.image}.jpg`)
+         img(src=`http://res.cloudinary.com/dtxrrhfqj/image/upload/${hotel.image}.jpg`)
             //- img(class="dps" src=`/images/hotels/${hotel.image}`)
     .hotel_info
         a(href=`/all/${hotel._id}`)
@@ -34,7 +34,7 @@ mixin hotel(hotel, searchQuery)
               .input_wrapper
                 button(type="submit") SEARCH
 
-    if url===`/results`
+    if url===`/results` || url.startsWith('/confirmation/')
       .hotel_order_details
        p(class="para1")= `Number of nights: ${searchQuery.duration}`
        p(class="para1")= `Departure date: ${searchQuery.dateOfDeparture}`
@@ -43,3 +43,12 @@ mixin hotel(hotel, searchQuery)
        p(class="para1")=`Total per person BHD ${costEach}`
        hr
        h3= `Total: BHD ${totalCost}`
+       
+       - const query= `id=${hotel._id}&duration=${searchQuery.duration}&dateOfDeparture=${searchQuery.dateOfDeparture}&numOfGuests=${searchQuery.numOfGuests}`
+       if url===`/results`
+        a.button(href=`/confirmation/${query}` class="proceed")  Proceed
+       else if url.startsWith('/confirmation/')
+        if user
+         a.button(href=`/order-placed/${query}`) Place Order!
+        else
+         a.button(href='/login') Login to order   

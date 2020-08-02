@@ -11,10 +11,16 @@ html
        a(href="/")
           img#logo(class="logo" src="/images/logo1.jpg")
        ul
-        li
-          a(href="/sign-up") Sign Up
-        li
-          a(href="/login") Login  
+        if !user
+          li
+            a(href="/sign-up") Sign Up
+          li
+            a(href="/login") Login
+        else 
+          li
+            a(href="my-account") My bookings     
+          li
+            a(href="/logout") Logout (#{user.first_name})  
 
    .search-nav
      form(action="/results" method="POST")
@@ -46,6 +52,13 @@ html
 
         .input_wrapper
            button(type="submit") SEARCH
+
+  - const values=Object.values(flash)
+  - const keys=Object.keys(flash)   
+  if keys.length>0
+    div(class=`message message_${keys}`)
+      span=values
+      span.close_btn(onclick="this.parentNode.remove()") &times;
 
   //- img(class="homepage" src="/images/travel.jpg")                          
   block content

@@ -7,6 +7,17 @@ const mongoose = require("mongoose");
 require('dotenv').config();
 var indexRouter = require('./routes/index');
 
+//For passport.js
+const User = require('./models/user');
+const passport = require('passport');
+
+//For flash messages
+const flash = require('connect-flash');
+
+//For sessions
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session); //session is middleware running fo each request
+
 var app = express();
 
 // // view engine setup
@@ -25,8 +36,35 @@ mongoose.connect(process.env.DB, {
 mongoose.Promise = global.Promise;
 
 
-
+//view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+app.use(session({
+  secret: process.env.SECRET,
+  saveUninitialized: false,
+  resave: false,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  })
+  //resave means session isot saved unless modified
+  //Secret is session id which is of your choice in env
+  //save unintialized means new session is not saved in database unless th ession is actually modified
+}));
+
+//configure passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+//Flash messages
+app.use(flash());
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -37,10 +75,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-  res.locals.url = req.path
+  res.locals.user = req.user;
+  res.locals.url = req.path;
+  res.locals.flash = req.flash();
   next();
 })
-
+//req.locals flash will enable it to be availble for entire project for ocnditional rendering
 app.use('/', indexRouter);
 
 

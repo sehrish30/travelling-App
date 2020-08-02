@@ -1,0 +1,27 @@
+extends layout
+block content
+ h2=title
+ hr
+
+ if user
+  h3= `Welcome, ${user.first_name}!`
+
+    if orders.length>0 
+        h3 Your Bookings
+        each order in orders
+         .bookings
+          ul
+           li=`Order ref: ${order._id}`
+           each data in order.hotel_data
+            li=`Hotel:${data.hotel_name}`
+            li=`Country:${data.country}`
+            li=`Departure:${order.order_details.dateOfDeparture}`
+            li=`Nights:${order.order_details.duration}`
+            li=`Guests:${order.order_details.numOfGuests}`
+    else
+        h3 No order to show, yet
+        img(class="nothing" src="images/nothing.svg" alt="not found") 
+ else 
+  h3 Please login to view this section!
+  img(class="nothing" src="images/nothing.svg" alt="not found")   
+         
