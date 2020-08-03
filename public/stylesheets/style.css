@@ -535,7 +535,7 @@ input#unavailable {
   .close_btn {
     float: right;
   }
-  
+ 
   .close_btn:hover {
     cursor: pointer;
   }
