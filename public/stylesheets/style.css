@@ -501,7 +501,7 @@ input#unavailable {
     padding-top: 4rem;
   }
 
-  .proceed {
+  a.proceed {
     background-color: var(--btn-color);
     padding: 1rem;
     margin: 1rem;
