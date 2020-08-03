@@ -29,7 +29,7 @@ var app = express();
 app.use(compression())
 
 //helmet middleware
-app.use(helmet());
+// app.use(helmet());
 
 // // view engine setup
 // mongoose.connect('mongodb+srv://lets_travel:letstravel@cluster0.icmzf.mongodb.net/<dbname>?retryWrites=true&w=majority');
