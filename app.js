@@ -29,7 +29,7 @@ var app = express();
 app.use(compression())
 
 //helmet middleware
-// app.use(helmet());
+app.use(helmet());
 
 // // view engine setup
 // mongoose.connect('mongodb+srv://lets_travel:letstravel@cluster0.icmzf.mongodb.net/<dbname>?retryWrites=true&w=majority');
@@ -39,14 +39,21 @@ app.use(compression())
 // })
 
 //New set up
-mongoose.connect(process.env.DB, {
+// mongoose.connect(process.env.DB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+//   .then(res => console.log('Connected to db'));
+// mongoose.Promise = global.Promise;
+const asyncMongo = async () => {
+  await mongoose.connect(process.env.DB, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(res => console.log('Connected to db'));
-mongoose.Promise = global.Promise;
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  });
+}
 
-
+asyncMongo();
 //view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
