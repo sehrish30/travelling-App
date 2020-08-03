@@ -485,9 +485,8 @@ input#unavailable {
   .para {
     font-size: 1.2rem;
     text-align: center;
+    padding: 0;
   }
-
-
   .countries {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
