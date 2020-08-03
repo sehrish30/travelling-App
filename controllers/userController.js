@@ -166,3 +166,23 @@ exports.myAccount = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.allOrders = async (req, res, next) => {
+    try {
+        const orders = await Order.aggregate([{
+            $lookup: {
+                from: 'hotels',
+                localField: 'hotel_id',
+                foreignField: '_id',
+                as: 'hotel_data'
+            }
+        }])
+        // res.json(orders);
+        res.render('orders', {
+            title: 'All Orders',
+            orders
+        });
+    } catch (error) {
+        next(error);
+    }
+}

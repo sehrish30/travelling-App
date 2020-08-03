@@ -35,7 +35,7 @@ router.get('/admin/:hotelId/update', hotelController.updateHotelGet);
 router.get('/admin/:hotelId/delete', hotelController.deleteHotelGet);
 router.post('/admin/:hotelId/update', hotelController.upload,
     hotelController.pushToCloudinary, hotelController.updateHotelPost);
-
+router.get('/admin/orders', userController.allOrders);
 
 //USER ROUTES
 // ============
@@ -47,6 +47,7 @@ router.get('/logout', userController.logout);
 router.get('/confirmation/:data', userController.bookingConfirmation);
 router.get('/order-placed/:data', userController.orderPlaced);
 router.get('/my-account', userController.myAccount)
+
 
 
 // router.get('/all/*:name', (req, res) => {

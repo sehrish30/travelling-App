@@ -6,6 +6,8 @@ var logger = require('morgan');
 const mongoose = require("mongoose");
 require('dotenv').config();
 var indexRouter = require('./routes/index');
+const compression = require('compression')
+const helmet = require('helmet');
 
 //For passport.js
 const User = require('./models/user');
@@ -19,6 +21,15 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session); //session is middleware running fo each request
 
 var app = express();
+
+//
+
+
+// compress responses
+app.use(compression())
+
+//helmet middleware
+app.use(helmet());
 
 // // view engine setup
 // mongoose.connect('mongodb+srv://lets_travel:letstravel@cluster0.icmzf.mongodb.net/<dbname>?retryWrites=true&w=majority');

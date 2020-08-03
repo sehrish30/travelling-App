@@ -3,8 +3,11 @@ link(href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,200&disp
 link(href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet")
 html
   head
-    title= title
+    title= "Travel With Us"
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="icon" type="image/png" href="images/apple-icon-180x180.png")
+    link(rel="manifest" href="/manifest.json")
+    
   body
    header
      nav
@@ -18,7 +21,7 @@ html
             a(href="/login") Login
         else 
           li
-            a(href="my-account") My bookings     
+            a(href="/my-account") My bookings     
           li
             a(href="/logout") Logout (#{user.first_name})  
 

@@ -165,7 +165,8 @@ h2:hover {
 h3 {
   color: var(--main-color);
   font-family: var(--hightligh-font);
-  font-size: 2.2rem
+  font-size: 2.2rem;
+  text-align: center;
 }
 
 .para {
@@ -310,6 +311,7 @@ input#unavailable {
   color: var(--btn-color);
   text-align: center;
   padding: 2rem;
+  border-radius: 10rem 0 10rem 0;
 }
 
 .para1 {
@@ -323,7 +325,90 @@ input#unavailable {
   color: var(--btn-color);
 }
 
+.message_info {
+  color: #9A94FD;
+
+}
+
+.message_success {
+  color: #B0F0C1;
+}
+
+.message_error {
+  color: #EBBAB2
+}
+
+.signup-form, .login-form{
+  text-align: center;
+}
+
+.bookings ul {
+  margin: 2rem 0;
+  background-color: var(--main-color);
+  padding: 10px;
+}
+
+.bookings li {
+  display: block;
+  background-color: var(--btn-color);
+  padding: 0.5rem;
+  color: var(--main-color)
+}
+
+
+.proceed {
+  background-color: var(--btn-color);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5rem 0 5rem 0;
+  color: var(--main-color);
+  font-family: var(--hightligh-font);
+
+}
+
+.hotel_order_details>h3 {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+}
+
+.para1 {
+  font-size: 1rem;
+}
+
+.nothing {
+  width: 30rem;
+  height: 30rem;
+}
+
+
+
+
+.message {
+  margin: 10px 0;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.close_btn {
+  float: right;
+}
+
+.close_btn:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 1330px) {
+  .proceed {
+    background-color: var(--btn-color);
+    padding: 1rem;
+    border-radius: 5rem 0 5rem 0;
+    color: var(--main-color);
+    font-family: var(--hightligh-font);
+  
+  }
+
   nav {
     flex-direction: row;
   }
@@ -420,17 +505,7 @@ input#unavailable {
     padding-top: 4rem;
   }
 
-  .hotel_order_details>h3 {
-    font-size: 2rem;
-  }
+ 
 
-  .para1 {
-    font-size: 1rem;
-  }
-
-  .nothing {
-    width: 30rem;
-    height: 30rem;
-  }
 
 }
